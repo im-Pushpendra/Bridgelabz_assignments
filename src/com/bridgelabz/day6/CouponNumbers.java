@@ -1,34 +1,40 @@
 package com.bridgelabz.day6;
 
+import java.util.*;
 public class CouponNumbers {
-    // return a random coupon between 0 and n-1
-    public static int getCoupon(int n) {
-        return (int) (Math.random() * n);
-    }
-
-    // return number of cards you collect before obtaining one of each of the n types
-    public static int collect(int n) {
-        boolean[] isCollected = new boolean[n];  // isCollected[i] = true if card type i already collected
-        int count = 0;                           // number of cards collected
-        int distinct  = 0;                       // number of distinct card types collected
-
-        // repeat until you've collected all n card types
-        while (distinct < n) {
-            int value = getCoupon(n);            // pick a random card
-            count++;                             // one more card
-            if (!isCollected[value]) {           // discovered a new card type
-                distinct++;
-                isCollected[value] = true;
-            }
-        }
-        return count;
-    }
-    // test client
+	public static boolean isPresent(int a[], int num) {
+		for (int i = 0; i < a.length; i++) {
+			if (a[i] == num) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	public static void main(String[] args) {
-        int n = Integer.parseInt(args[0]);
-        int count = collect(n);
-        System.out.println(count);
+		System.out.println("how many random numbers do you\r\n" + "need to generate a distinct coupon number?");
+		Scanner scanner = new Scanner(System.in);
+		int size = scanner.nextInt();
+		int randomNum = 0;
+		int arr[] = new int[size];
+		Random coupon = new Random();
+		boolean return1;
+
+		for (int i = 0; i < arr.length; i++) {
+			randomNum = coupon.nextInt(20);
+			return1 = isPresent(arr, randomNum);
+			if (return1 != true) {
+				arr[i] = randomNum;
+			} else {
+				--i;
+			}
+		}
+
+		System.out.println("The random numbers generated are ");
+		for (int i = 0; i < arr.length; i++) {
+			System.out.print(" " + arr[i]);
+		}
+
 
 	}
 
