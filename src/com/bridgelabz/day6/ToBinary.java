@@ -8,9 +8,11 @@ public class ToBinary {
 		while (powOf2 <= decimal) {
 			powOf2 = (int) Math.pow(2, count);
 			++count;
-		}
-		for (int i = count - 2; i >= 0; i--) {
+		}//System.out.println(count);
+		//System.out.println(powOf2);
+		for (int i = count-2 ; i >= 0; i--) {
 			powOf2 = (int) Math.pow(2, i);
+			//System.out.println(powOf2);
 			if (powOf2 <= decimal) {
 				decimal = decimal - powOf2;
 				binStr += 1;
